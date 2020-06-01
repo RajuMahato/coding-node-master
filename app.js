@@ -1,6 +1,7 @@
 const express = require('express');
 
 const routes = require('./routes');
+const db = require("./lib/database");
 const { ValidationError, NotFoundError } = require('./lib/errors');
 
 const app = express();
@@ -20,5 +21,11 @@ app.use('/', (err, req, res, next) => {
     message: err.message,
   });
 });
+
+/*app.listen(8080, () => {
+  console.log("App launched!");
+  // Connect database
+  db.connectToDb();
+})*/
 
 module.exports = app;
